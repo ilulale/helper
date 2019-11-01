@@ -1,0 +1,48 @@
+import java.util.*;
+
+class shape
+{
+	public static void main(String args[])
+	{
+		Scanner s = new Scanner(System.in);
+			
+		System.out.println("1.Area of circle");
+		System.out.println("2.Area of square");
+		System.out.println("3.Area of rectangle");
+		System.out.println("4.Area of triangle");
+		
+		System.out.println("Enter your choice");
+		int choice = s.nextInt();
+		
+		switch(choice)
+		{
+			case 1: System.out.println("Enter the radius");
+					int r = s.nextInt();
+					double areaofcircle = 3.14 * r * r;
+					System.out.println("Area is: " + areaofcircle);
+					break;
+				
+			case 2: System.out.println("Enter the length");
+					int s1 = s.nextInt();
+					int areaofsquare = s1*s1;
+					System.out.println("Area is: " + areaofsquare);
+					break;
+					
+			case 3: System.out.println("Enter the length");
+					int s2 = s.nextInt();
+					System.out.println("Enter the width");
+					int s3 = s.nextInt();
+					int areaofrect = s2*s3;
+					System.out.println("Area is: " + areaofrect);
+					break;
+					
+			case 4: System.out.println("Enter the width");
+					int s4 = s.nextInt();
+					System.out.println("Enter the height");
+					int s5 = s.nextInt();
+					double areaoftriangle = (s4*s5)/2;
+					System.out.println("Area is: " + areaoftriangle);
+					break;
+		}
+	}
+}

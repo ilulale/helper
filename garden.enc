@@ -1,0 +1,68 @@
+import java.io.*;
+import java.util.*;
+
+class tree
+{
+	int t_id, ut_id;
+	String t_name, ut_name;
+	
+	tree(int i, String n)
+	{
+		t_id = i;
+		t_name = n;
+	}
+	
+	void display()
+	{
+		System.out.println("ID: " + t_id);
+		System.out.println("Name: " + t_name);
+	}
+	
+	void update()throws IOException
+	{	
+	
+	`	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+        	System.out.println("Enter updated Tree ID");
+        	ut_id = Integer.parseInt(br.readLine());
+
+		System.out.println("Enter updated Tree Name");
+		ut_name = br.readLine();
+		
+		t_id = ut_id;
+		t_name = ut_name;
+	}
+}
+
+class mango extends tree
+{
+		int m_yield;
+		
+		mango(int i, String n, int y)
+		{
+			super(i,n);
+			m_yield = y;
+		}
+		
+		void display()
+		{
+		System.out.println("ID: " + t_id);
+		System.out.println("Name: " + t_name);	
+		System.out.println("Yield: " + m_yield);
+		}
+}
+
+class garden
+{
+	public static void main(String args[])throws IOException
+	{
+		tree t = new tree(1,"abc");
+		t.display();
+		t.update();
+		System.out.println("updated tree information is: ");
+		t.display();
+		
+		mango m= new mango(2, "as", 21);
+		m.display();
+	}
+}

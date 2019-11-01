@@ -1,0 +1,87 @@
+import java.io.*;
+import java.util.*;
+
+class bank1 
+{
+	int a_id, a_bal, a_yr, a_rate,a_fine;
+	String a_name, a_type;
+	boolean b;
+	
+	//Scanner s = new Scanner(System.in);
+	
+	void read() throws IOException
+	
+	{
+	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));	
+	System.out.println("Enter ID ");
+		a_id = Integer.parseInt(br.readLine());
+		
+		System.out.println("Enter Name ");
+		a_name = br.readLine();
+		
+		System.out.println("Enter Amount ");
+		a_bal = Integer.parseInt(br.readLine());
+	}
+	void current()
+	{
+		if(a_bal <= 10)
+		{
+			System.out.println("Less Balance");
+			a_fine = a_bal + 1000;
+			System.out.println("Fine: " + a_fine);
+		}
+		else
+		{
+			System.out.println(a_id + " " + a_name + " " + a_bal);
+		}
+	}
+	
+	void savings() throws IOException 
+	{
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));	
+		if(b == true)
+		{
+			System.out.println("Enter the amount you want to deposit");
+			int a_dep = Integer.parseInt(br.readLine());
+			a_bal = a_bal + a_dep;
+			System.out.println("Deposit: " + a_dep);
+		}
+		else
+		{
+			System.out.println("Enter the amount you want to withdraw");
+			int a_with = Integer.parseInt(br.readLine());		
+			a_bal = a_bal - a_with;
+			System.out.println("withdraw " + a_with);
+		}
+
+		double a_com = Math.pow(1+a_rate/100,a_yr) - a_bal;
+		System.out.println("Compound Interest: " + a_com);
+	}
+	
+	public static void main(String args[]) throws IOException
+	{
+		int ch;
+		
+		bank1 b1 =new bank1();
+		b1.read();
+		
+		System.out.println("Enter your Choice");
+		System.out.println("1.Current");
+		System.out.println("2.Savings");
+		
+		Scanner s1 = new Scanner(System.in);
+		ch = s1.nextInt();
+		
+		switch(ch)
+		{
+			case 1: b1.current();
+					break;
+					
+			case 2: b1.savings();
+					break;
+					
+			default: System.out.println("Try Again");
+					 break;
+		}
+	}	
+}
