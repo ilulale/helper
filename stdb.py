@@ -1,16 +1,34 @@
 import tkinter as tk
 import csv
 
+def stid():
+    with open('stdb.csv','r',newline='') as file:
+        reader = csv.reader(file)
+        i=0
+        for row in reader:
+            i=i+1
+    i=i+1001
+    return i
+
+        
+
+def writedb(fn,ln,rn,pn):
+    with open('stdb.csv','a+',newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([fn,ln,rn,pn,stid()])
+        
+
 def buttonPress():
-    first=fname.get()
+    first=fname.get() 
     last=lname.get()
     roll=rname.get()
     phone=pname.get()
-    print(first+' '+last+' gand mara')
+    writedb(first,last,roll,phone)
 
-    
+trial=['Aryan','Thakur',56,9876543] #trial to check display box (text)
+
 master=tk.Tk()
-master.geometry('500x500')
+master.geometry('500x200')
 master.title('Student Database v1.0')
 lb=tk.Label(master,text='Welcome to the Student Portal')
 lb.pack()
@@ -34,4 +52,8 @@ fname.grid(column=1,row=0)
 cv.pack()
 but=tk.Button(master,text='Done',command=buttonPress)
 but.pack()
+txet=tk.Text(master)
+txet.insert('1.0',trial)
+txet.pack()
 master.mainloop()
+
